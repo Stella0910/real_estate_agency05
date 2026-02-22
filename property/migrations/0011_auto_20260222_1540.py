@@ -6,16 +6,16 @@ from django.db import migrations
 def transfer_owner_data(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     Owner = apps.get_model('property', 'Owner')
-    owners = Flat.objects.only(
+    flats = Flat.objects.only(
                 'owner',
                 'owners_phonenumber',
                 'owner_pure_phone'
              )
-    for owner in owners:
+    for flat in flats:
         Owner.objects.get_or_create(
-            name=owner.owner,
-            phonenumber=owner.owners_phonenumber,
-            pure_phone=owner.owner_pure_phone
+            name=flat.owner,
+            phonenumber=flat.owners_phonenumber,
+            pure_phone=flat.owner_pure_phone
         )
 
 
