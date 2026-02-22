@@ -11,8 +11,6 @@ class FlatAdmin(admin.ModelAdmin):
     readonly_fields = ['created_at']
     list_display = [
         'address',
-        'owners_phonenumber',
-        'owner_pure_phone',
         'price',
         'new_building',
         'construction_year',
@@ -33,7 +31,7 @@ class ComplaintAdmin(admin.ModelAdmin):
 
 
 class OwnerAdmin(admin.ModelAdmin):
-    raw_id_fields = ['flats']
+    raw_id_fields = ['flats',]
 
 
 admin.site.register(Flat, FlatAdmin)
