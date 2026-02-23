@@ -1,9 +1,12 @@
 from django.contrib import admin
 
 
-from .models import Flat
-from .models import Complaint
-from .models import Owner
+from property.models import Flat, Complaint, Owner
+
+
+class FlatsInline(admin.TabularInline):
+    model = Owner.flats.through
+    raw_id_fields = ['owner']
 
 
 class FlatAdmin(admin.ModelAdmin):
@@ -24,6 +27,9 @@ class FlatAdmin(admin.ModelAdmin):
         'active',
     ]
     raw_id_fields = ['liked_by']
+    inlines = [
+        FlatsInline,
+    ]
 
 
 class ComplaintAdmin(admin.ModelAdmin):
