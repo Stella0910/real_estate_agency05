@@ -12,7 +12,8 @@ class Flat(models.Model):
                  (None, 'Неизвестно')],
         default=None,
         null=True,
-        blank=True)
+        blank=True,
+        db_index=True)
     created_at = models.DateTimeField(
         'Когда создано объявление',
         default=timezone.now,
